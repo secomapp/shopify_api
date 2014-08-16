@@ -3,9 +3,6 @@
 	namespace sandeepshetty\shopify_api;
 
 
-    use sandeepshetty\wcurl;
-
-
 	function install_url($shop, $api_key)
 	{
 		return "http://$shop/admin/api/auth?api_key=$api_key";
