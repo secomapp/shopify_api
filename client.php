@@ -105,11 +105,13 @@
   
   function _shop_api_call_limit_param($index, $response_headers) {
     try {
-      $params = explode ( '/', $response_headers ['http_x_shopify_shop_api_call_limit'] );
-      return ( int ) $params [$index];
+      if(isset($response_headers ['http_x_shopify_shop_api_call_limit'] )){
+        $params = explode ( '/', $response_headers ['http_x_shopify_shop_api_call_limit'] );
+        return ( int ) $params [$index];
+      }
     } catch ( Exception $e ) {
-      return -1;
     }
+    return -1;
   }
   
   class CurlException extends \Exception {
