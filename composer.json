@@ -1,5 +1,5 @@
 {
-	"name": "opz/shopify_api",
+	"name": "secomapp/shopify_api",
 	"type": "library",
 	"description": "Simple Shopify API client in PHP",
 	"keywords": ["shopify","api"],
