@@ -76,7 +76,7 @@
       if ($loop < 3 && ($response_headers ['http_status_code'] == 429 || calls_left ( $response_headers ) == 0)) {
         usleep ( 500000 ); // sleep 0.5 second and try again (max 3 times)
         $loop ++;
-        return _api ( $method, $url, $query, $payload, $request_headers, &$response_headers, $loop );
+        return _api ( $method, $url, $query, $payload, $request_headers, $response_headers, $loop );
       }
       throw new ApiException ( compact ( 'method', 'path', 'params', 'response_headers', 'response', 'shops_myshopify_domain', 'shops_token' ) );
     }
