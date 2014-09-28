@@ -41,6 +41,7 @@
     $baseurl = "https://$shop/";
     
     return function ($method, $path, $params = array(), &$response_headers = array()) use($baseurl, $shops_token) {
+      setlocale(LC_ALL, "en_US.UTF8");
       $url = $baseurl . ltrim ( $path, '/' );
       $query = in_array ( $method, array (
           'GET',
@@ -49,7 +50,7 @@
       $payload = in_array ( $method, array (
           'POST',
           'PUT' 
-      ) ) ? stripslashes ( json_encode ( $params ) ) : array ();
+      ) ) ? json_encode ( $params ) : array ();
       
       $request_headers = array ();
       array_push ( $request_headers, "X-Shopify-Access-Token: $shops_token" );
