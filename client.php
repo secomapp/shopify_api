@@ -121,7 +121,11 @@
     protected $info;
     function __construct($info) {
       $this->info = $info;
-      parent::__construct ( $info ['response_headers'] ['http_status_message'], $info ['response_headers'] ['http_status_code'] );
+      $errordetail = "ERROR DETAIL:".PHP_EOL
+      ."response_headers".print_r($info ['response_headers'],true).PHP_EOL
+      ."response".print_r($info ['response'],true).PHP_EOL;
+//       parent::__construct ( $info ['response_headers'] ['http_status_message'], $info ['response_headers'] ['http_status_code'] );
+      parent::__construct ( $errordetail, $info ['response_headers'] ['http_status_code'] );
     }
     function getInfo() {
       return $this->info;
