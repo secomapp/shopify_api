@@ -1,6 +1,6 @@
 <?php
 
-  namespace sandeepshetty\shopify_api;
+  namespace secomapp\shopify_api;
   
   function install_url($shop, $api_key) {
     return "http://$shop/admin/api/auth?api_key=$api_key";
