@@ -7,6 +7,7 @@
   }
   
   function is_valid_request($query_params, $shared_secret) {
+    if (!isset($query_params['timestamp'])) return false;
     $seconds_in_a_day = 24 * 60 * 60;
     $older_than_a_day = $query_params ['timestamp'] < (time () - $seconds_in_a_day);
     if ($older_than_a_day)
