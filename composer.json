@@ -13,9 +13,8 @@
 	],
 	"require": {
 		"php": ">=5.3.0",
-		"sandeepshetty/wcurl": "dev-master"
 	},
 	"autoload": {
-		"files": ["../../sandeepshetty/wcurl/wcurl.php", "client.php"]
+		"files": ["client.php"]
 	}
 }
