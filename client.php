@@ -1,7 +1,22 @@
 <?php
-
   namespace secomapp\shopify_api;
-  class WcurlException extends Exception { }
+  class WcurlException extends \Exception { }
+  class CurlException extends \Exception {  }
+  class ApiException extends \Exception {
+    protected $info;
+    function __construct($info) {
+      $this->info = $info;
+      $errordetail = "ERROR DETAIL:".PHP_EOL
+      ."response_headers".print_r($info ['response_headers'],true).PHP_EOL
+      ."response".print_r($info ['response'],true).PHP_EOL;
+//       parent::__construct ( $info ['response_headers'] ['http_status_message'], $info ['response_headers'] ['http_status_code'] );
+      parent::__construct ( $errordetail, $info ['response_headers'] ['http_status_code'] );
+    }
+    function getInfo() {
+      return $this->info;
+    }
+  }
+  
   function wcurl($method, $url, $query='', $payload='', $request_headers=array(), &$response_headers=array(), $curl_opts=array())
   {
     $ch = curl_init(wcurl_request_uri($url, $query));
@@ -188,23 +203,6 @@
     } catch ( Exception $e ) {
     }
     return -1;
-  }
-  
-  class CurlException extends \Exception {
-  }
-  class ApiException extends \Exception {
-    protected $info;
-    function __construct($info) {
-      $this->info = $info;
-      $errordetail = "ERROR DETAIL:".PHP_EOL
-      ."response_headers".print_r($info ['response_headers'],true).PHP_EOL
-      ."response".print_r($info ['response'],true).PHP_EOL;
-//       parent::__construct ( $info ['response_headers'] ['http_status_message'], $info ['response_headers'] ['http_status_code'] );
-      parent::__construct ( $errordetail, $info ['response_headers'] ['http_status_code'] );
-    }
-    function getInfo() {
-      return $this->info;
-    }
   }
   
   function legacy_token_to_oauth_token($shops_token, $shared_secret, $private_app = false) {
