@@ -18,7 +18,7 @@ Create a `composer.json` file if you don't already have one in your projects roo
 {
 	"minimum-stability": "dev",
 	"require": {
-		"sandeepshetty/shopify_api": "dev-master"
+		"secomapp/shopify_api": "dev-master"
 	}
 }
 ```
@@ -43,8 +43,7 @@ To learn more about Composer visit http://getcomposer.org/
 ```php
 <?php
 
-	require 'vendor/autoload.php';
-	use sandeepshetty\shopify_api;
+	use secomapp\shopify_api;
 
 ?>
 ```
