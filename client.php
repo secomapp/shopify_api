@@ -24,9 +24,9 @@
     $response = curl_exec($ch);
     $curl_info = curl_getinfo($ch);
     $error = curl_error($ch).PHP_EOL."Response:".PHP_EOL.print_r($response,true);
-    $error = curl_error($ch);
+    $errorno = curl_errno($ch);
     curl_close($ch);
-    if ($error) throw new WcurlException($error->getMessage (), $error->getCode ());
+    if ($error) throw new WcurlException($error, $errorno);
     $header_size = $curl_info["header_size"];
     $msg_header = substr($response, 0, $header_size);
     $msg_body = substr($response, $header_size);
