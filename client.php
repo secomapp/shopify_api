@@ -102,14 +102,11 @@
     if ($older_than_a_day)
       return false;
     
-    $signature = $query_params ['signature'];
-    unset ( $query_params ['signature'] );
-    
-    foreach ( $query_params as $key => $val )
-      $params [] = "$key=$val";
-    sort ( $params );
-    
-    return (md5 ( $shared_secret . implode ( '', $params ) ) === $signature);
+    $hmac = $query_params['hmac'];
+    unset($query_params['hmac']);
+    foreach ($query_params as $key=>$val) $params[] = "$key=$val";
+    sort($params);
+    return (hash_hmac('sha256', ''.implode('&', $params), $shared_secret, false) === $hmac);
   }
   
   function permission_url($shop, $api_key, $scope = array(), $redirect_uri = '') {
