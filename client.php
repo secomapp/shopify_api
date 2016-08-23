@@ -50,8 +50,8 @@
       CURLOPT_SSL_VERIFYPEER => true,
       CURLOPT_SSL_VERIFYHOST => 2,
       CURLOPT_USERAGENT => 'wcurl',
-      CURLOPT_CONNECTTIMEOUT => 30,
-      CURLOPT_TIMEOUT => 30,
+      CURLOPT_CONNECTTIMEOUT => 120,
+      CURLOPT_TIMEOUT => 120,
     );
     if ('GET' == $method)
     {
