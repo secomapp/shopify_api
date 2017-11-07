@@ -1,5 +1,9 @@
 <?php
   namespace secomapp\shopify_api;
+
+  use GuzzleHttp\json_encode;
+  use GuzzleHttp\json_decode;
+
   class WcurlException extends \Exception { }
   class CurlException extends \Exception {  }
   class ApiException extends \Exception {
