@@ -166,7 +166,7 @@
     
     if (isset ( $response ['errors'] ) or ($response_headers ['http_status_code'] >= 400)) {
       if ($loop < 3 && ($response_headers ['http_status_code'] == 429 || calls_left ( $response_headers ) == 0)) {
-        usleep ( 500000 ); // sleep 0.5 second and try again (max 3 times)
+        usleep (floatval($response_headers['retry-after']*1000000,2000000) ); // sleep and try again (max 3 times)
         $loop ++;
         return _api ( $method, $url, $query, $payload, $request_headers, $response_headers, $loop );
       }
