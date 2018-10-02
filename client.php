@@ -167,7 +167,7 @@
     if (isset ( $response ['errors'] ) or ($response_headers ['http_status_code'] >= 400)) {
       if ($loop < 3 && ($response_headers ['http_status_code'] == 429 || calls_left ( $response_headers ) == 0)) {
         try{
-          $delaytime = floatval($response_headers['retry-after']*1000000;
+          $delaytime = floatval($response_headers['retry-after'])*1000000;
         }catch(\Exception $ex){
           $delaytime = 2000000;
         }
