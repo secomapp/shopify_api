@@ -107,7 +107,7 @@
       return false;
     
     $hmac = $query_params['hmac'];
-    unset($query_params['hmac']);
+    unset($query_params['signature'], $query_params['hmac']);
     foreach ($query_params as $key=>$val) $params[] = "$key=$val";
     sort($params);
     return (hash_hmac('sha256', ''.implode('&', $params), $shared_secret, false) === $hmac);
